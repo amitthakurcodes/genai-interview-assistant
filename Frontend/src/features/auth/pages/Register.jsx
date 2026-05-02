@@ -1,0 +1,80 @@
+import React, { useState } from "react"
+import { useNavigate, Link } from "react-router-dom"
+import { useAuth } from "../hooks/useAuth"
+import "../auth.form.scss"
+
+const Register = () => {
+
+    const { loading, handleRegister } = useAuth()
+    const navigate = useNavigate()
+
+    const [username, setUsername] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [showPassword, setShowPassword] = useState(false)
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        await handleRegister({ username, email, password })
+        navigate("/")
+    }
+
+    if (loading) {
+        return <div className="loading">Loading...</div>
+    }
+
+    return (
+        <main className="auth-page">
+            <div className="form-container">
+
+                <h1 className="title">Register</h1>
+
+                <form onSubmit={handleSubmit}>
+
+                    <div className="input-group">
+                        <label>Username</label>
+                        <input
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            type="text"
+                            placeholder="Enter username"
+                        />
+                    </div>
+
+                    <div className="input-group">
+                        <label>Email</label>
+                        <input
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            type="email"
+                            placeholder="Enter email"
+                        />
+                    </div>
+
+                    <div className="input-group password-box">
+                        <label>Password</label>
+                        <input
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            type={showPassword ? "text" : "password"}
+                            placeholder="Enter password"
+                        />
+                        <span onClick={() => setShowPassword(!showPassword)}>
+                            {showPassword ? "🙈" : "👁️"}
+                        </span>
+                    </div>
+
+                    <button className="primary-btn">Register</button>
+
+                </form>
+
+                <p className="switch-text">
+                    Already have an account? <Link to="/login">Login</Link>
+                </p>
+
+            </div>
+        </main>
+    )
+}
+
+export default Register
