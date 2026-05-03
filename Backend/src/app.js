@@ -37,7 +37,10 @@ app.use(cookieParser())
 
 // Local me localhost:5173, production me Netlify URL env se aayegi
 app.use(cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:5173",
+    origin: [
+        process.env.FRONTEND_URL,
+        "http://localhost:5173"
+    ],
     credentials: true
 }))
 

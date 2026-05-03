@@ -212,8 +212,46 @@ const Interview = () => {
 
                 <div className='interview-divider' />
 
-                {/* ── Center Content ── */}
-                <main className='interview-content'>
+
+                 {/* ── Right Sidebar ── */}
+                <aside className='interview-sidebar'>
+
+                    {/* Match Score */}
+                    <div className='match-score'>
+                        <p className='match-score__label'>Match Score</p>
+                        <div className='match-score__body'>
+                            <div className={`match-score__ring ${scoreColor}`}>
+                                <span className='match-score__value'>{report.matchScore}</span>
+                                <span className='match-score__pct'>%</span>
+                            </div>
+                            <div className='match-score__info'>
+                                <p className={`match-score__sub ${scoreColor}`}>{scoreLabel}</p>
+                                <p className='match-score__hint'>Based on your resume vs JD</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='sidebar-divider' />
+
+                    {/* Skill Gaps */}
+                    <div className='skill-gaps'>
+                        <p className='skill-gaps__label'>Skill Gaps</p>
+                        <div className='skill-gaps__list'>
+                            {report.skillGaps.map((gap, i) => (
+                                <span key={i} className={`skill-tag skill-tag--${gap.severity}`}>
+                                    {gap.skill}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+
+                </aside>
+
+
+                <div className='interview-divider' />
+
+
+                  <main className='interview-content'>
                     {activeNav === 'technical' && (
                         <section>
                             <div className='content-header'>
@@ -257,41 +295,6 @@ const Interview = () => {
                     )}
                 </main>
 
-                <div className='interview-divider' />
-
-                {/* ── Right Sidebar ── */}
-                <aside className='interview-sidebar'>
-
-                    {/* Match Score */}
-                    <div className='match-score'>
-                        <p className='match-score__label'>Match Score</p>
-                        <div className='match-score__body'>
-                            <div className={`match-score__ring ${scoreColor}`}>
-                                <span className='match-score__value'>{report.matchScore}</span>
-                                <span className='match-score__pct'>%</span>
-                            </div>
-                            <div className='match-score__info'>
-                                <p className={`match-score__sub ${scoreColor}`}>{scoreLabel}</p>
-                                <p className='match-score__hint'>Based on your resume vs JD</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className='sidebar-divider' />
-
-                    {/* Skill Gaps */}
-                    <div className='skill-gaps'>
-                        <p className='skill-gaps__label'>Skill Gaps</p>
-                        <div className='skill-gaps__list'>
-                            {report.skillGaps.map((gap, i) => (
-                                <span key={i} className={`skill-tag skill-tag--${gap.severity}`}>
-                                    {gap.skill}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
-
-                </aside>
             </div>
         </div>
     )
