@@ -15,6 +15,7 @@ const Navbar = () => {
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
+            flexWrap: 'nowrap',
             padding: '14px 32px',
             backgroundColor: '#0f1117',
             borderBottom: '1px solid #1e2330',
@@ -25,15 +26,15 @@ const Navbar = () => {
             {/* Logo */}
             <span
                 onClick={() => navigate('/')}
-                style={{ cursor: 'pointer', fontWeight: 700, fontSize: '1.1rem', color: '#fff' }}
+                style={{ cursor: 'pointer', fontWeight: 700, fontSize: '1.1rem', color: '#fff', whiteSpace: 'nowrap' ,  marginLeft: '-20px' }}
             >
-                🎯 <span style={{ color: '#e8356d' }}>GenAI</span> Interview
+                🎯 <span style={{ color: '#e8356d' }}>PrepWise</span> AI
             </span>
 
             {/* Right Side */}
             {user && (
-                <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                    <span style={{ color: '#9ca3af', fontSize: '0.9rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexShrink: 0 }}>
+                    <span style={{ color: '#9ca3af', fontSize: '0.9rem', whiteSpace: 'nowrap' }}>
                         👋 {user.username || user.email}
                     </span>
                     <button
