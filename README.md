@@ -6,8 +6,7 @@ An AI-powered full stack web application that helps users prepare for interviews
 
 ## 🌐 Live Demo
 
-Frontend: Coming Soon
-Backend API: Coming Soon
+Link -: https://genai-interview-assistant.vercel.app/
 
 ---
 
